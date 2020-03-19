@@ -4,15 +4,23 @@
 
     <button>Play</button>
     <button>Save your progress!</button>
+    <p>{{starWars}}</p>
 
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String,
+  },
+  computed: {
+    ...mapState([
+      'starWars',
+    ]),
   },
 };
 </script>
