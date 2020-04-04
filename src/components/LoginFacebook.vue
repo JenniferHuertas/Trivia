@@ -2,25 +2,32 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
 
-    <button>Play</button>
-    <button>Save your progress!</button>
-    <p>{{starWars}}</p>
+    <button @click="loginFacebook" class="btn btn-primary">Facebook</button>
+    <button class="btn btn-warning">Registrarme</button>
+
 
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
 
 export default {
-  name: 'HelloWorld',
+  name: 'LoginFacebook',
   props: {
     msg: String,
   },
   computed: {
-    ...mapState([
-      'starWars',
-    ]),
+
+  },
+  methods: {
+    loginFacebook() {
+      const provider = firebase.auth().FacebookAuthProvider();
+      return firebase.auth().signInWithPopup(provider);
+    },
+
   },
 };
 </script>

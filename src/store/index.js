@@ -8,9 +8,16 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     starWars: [],
+    registroUsuario: {
+      name: '',
+      email: '',
+      password: '',
+      error: '',
+    },
   },
   mutations: {
     ...vuexfireMutations,
+
   },
   actions: {
     bindpreguntasStarWars: firestoreAction(({ bindFirestoreRef }) => bindFirestoreRef('starWars', db.collection('preguntasStarWars'))),
