@@ -25,7 +25,22 @@ export default {
   methods: {
     loginFacebook() {
       const provider = firebase.auth().FacebookAuthProvider();
-      return firebase.auth().signInWithPopup(provider);
+      console.log(firebase.auth.FacebookAuthProvider);
+      return firebase.auth().signInWithPopup(provider).then((result) => {
+        const token = result.credential.accessToken;
+        console.log(token);
+        const { user } = result;
+        console.log(user);
+      }).catch((error) => {
+        const errorCode = error.code;
+        console.log(errorCode);
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        const { email } = error;
+        console.log(email);
+        const { credential } = error;
+        console.log(credential);
+      });
     },
 
   },
